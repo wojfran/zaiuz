@@ -1,2 +1,3 @@
 course_materials/
-pliki_pomocnicze/
+node_modules/
+.env
