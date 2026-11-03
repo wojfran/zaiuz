@@ -10,6 +10,8 @@ const port = process.env.PORT || 3000;
 const host = process.env.IP || '::';
 
 app.disable('x-powered-by');
+// behind the hosting proxy: take the client address from X-Forwarded-For (used by the login limit)
+app.set('trust proxy', 1);
 
 // content checks go before the body is parsed
 app.use('/api', requireJsonResponse, requireJsonBody);
