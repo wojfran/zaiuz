@@ -9,9 +9,10 @@ function requireJsonResponse(req, res, next) {
 }
 
 // 415 when the request has a body that is not JSON
-// (req.is returns null for requests without a body)
+// (an empty body, e.g. logout, is fine even without Content-Type)
 function requireJsonBody(req, res, next) {
-  if (req.is('json') === false) {
+  const hasContent = Number(req.get('Content-Length')) > 0 || req.get('Transfer-Encoding');
+  if (hasContent && !req.is('json')) {
     return next(new HttpError(415, 'Treść żądania musi mieć typ application/json.'));
   }
   next();
