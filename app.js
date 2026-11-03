@@ -2,6 +2,7 @@ const express = require('express');
 const { pool } = require('./db');
 const { requireJsonResponse, requireJsonBody } = require('./middleware/content');
 const { notFound, errorHandler } = require('./errors');
+const api = require('./routes/api');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -14,9 +15,7 @@ app.disable('x-powered-by');
 app.use('/api', requireJsonResponse, requireJsonBody);
 app.use(express.json());
 
-app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok' });
-});
+app.use('/api', api);
 
 app.use(notFound);
 app.use(errorHandler);
