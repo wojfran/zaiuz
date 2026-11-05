@@ -7,7 +7,9 @@
     "start": "node app.js",
     "dev": "node --watch --env-file=.env app.js",
     "db:init": "node --env-file=.env scripts/init-db.js",
-    "db:seed": "node --env-file=.env scripts/seed-admin.js"
+    "db:seed": "node --env-file=.env scripts/seed-admin.js",
+    "generator": "node generator/cli.js",
+    "test": "node --test test/"
   },
   "engines": {
     "node": ">=20"
