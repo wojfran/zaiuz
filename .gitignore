@@ -1,3 +1,4 @@
 course_materials/
 node_modules/
 .env
+generator/keys.json
